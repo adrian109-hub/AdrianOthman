@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import modelo.Libro;
 import util.ConexionDB;
+import java.sql.*;
 
 /**
  *
@@ -18,7 +19,14 @@ public class LibroDAO implements GenericDao<Libro>{
 
     @Override
     public boolean insertar(Libro objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         String sql="INSERT INTO libro(id,titulo,autor,precio,stock)"+
+                 "VALUES(?,?,?,?,?)";
+            try (Connection con = ConexionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+                ps.setString(1, objeto.getId());
+                ps.setString(2, objeto.getTitulo());
+                ps.setString(3, objeto.getAutor());
+            }
     }
 
     @Override
