@@ -23,26 +23,8 @@ public class LibroDAO implements GenericDao<Libro>{
 
     @Override
     public List<Libro> obtenertodos() {
-        List<Libro> lista = new ArrayList<>();
-
-        String sql = "SELECT * FROM libro";
-
-        try (Connection con = ConexionDB.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
-            while (rs.next()) {
-                lista.add(mapear(rs));
-            }
-
-        } catch (SQLException e) {
-            System.out.println("Error obteniendo plataformas: " +
-e.getMessage());
-        }
-
-        return lista;
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 
     @Override
     public Libro obtenerPorId(int id) {
@@ -58,5 +40,22 @@ e.getMessage());
     public boolean eliminar(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
+    @Override
+    public List<Libro> obtenerPorTitulo(String titulo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Libro> obtenerPorAutor(String autor) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Libro> obtenerPorPrecio(double minimo, double maximo) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+ 
     
 }
