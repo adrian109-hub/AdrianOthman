@@ -4,8 +4,11 @@
  */
 package dao;
 
+import com.sun.jdi.connect.spi.Connection;
+import java.util.ArrayList;
 import java.util.List;
 import modelo.Libro;
+import util.ConexionDB;
 
 /**
  *
@@ -20,8 +23,26 @@ public class LibroDAO implements GenericDao<Libro>{
 
     @Override
     public List<Libro> obtenertodos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        List<Libro> lista = new ArrayList<>();
+
+        String sql = "SELECT * FROM libro";
+
+        try (Connection con = ConexionDB.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                lista.add(mapear(rs));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error obteniendo plataformas: " +
+e.getMessage());
+        }
+
+        return lista;
     }
+    
 
     @Override
     public Libro obtenerPorId(int id) {

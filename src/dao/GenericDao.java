@@ -16,4 +16,7 @@ public interface GenericDao<T> {
     T obtenerPorId(int id);
     boolean actualizar(T objeto);
     boolean eliminar(int id);
+      List<T> obtenerPorTitulo(String titulo);
+    List<T> obtenerPorAutor(String autor);
+    List<T> obtenerPorPrecio(double minimo, double maximo);
 }
