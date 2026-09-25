@@ -9,7 +9,7 @@ package modelo;
  * @author 2DAM
  */
 public class Libro {
-   private int id;
+   private String id;
    private String titulo;
    private String autor;
    private double precio;
@@ -18,8 +18,8 @@ public class Libro {
     public Libro() {
     }
 
-  
-    public Libro(int id, String titulo, String autor, double precio, int stock) {
+ 
+    public Libro(String id, String titulo, String autor, double precio, int stock) {
         this.id = id;
         this.titulo = titulo;
         this.autor = autor;
@@ -27,7 +27,7 @@ public class Libro {
         this.stock = stock;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -47,7 +47,7 @@ public class Libro {
         return stock;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
