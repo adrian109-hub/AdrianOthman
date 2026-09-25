@@ -6,24 +6,26 @@ package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConexionDB {
 
-    private static final String URL = "jdbc:mysql://localhost:3306/librorepositorymysql";
-    private static final String USER = "root";
-    private static final String PASS = "";
+    public static Connection getConexion() {
 
-    public static Connection getConnection() {
-        Connection con = null;
+        Dotenv dotenv = Dotenv.load();
+
+        String url = dotenv.get("DB_URL");
+        String usuario = dotenv.get("DB_USER");
+        String contraseña = dotenv.get("DB_PASSWORD");
 
         try {
-            con = DriverManager.getConnection(URL, USER, PASS);
-        } catch (SQLException e) {
-            System.out.println("Error al conectar con la base de datos: "
-                    + e.getMessage());
+            return DriverManager.getConnection(url, usuario, contraseña);
+        } catch (Exception e) {
+            System.out.println("Error al conectar con la base de datos.");
+            System.out.println(e.getMessage());
+            return null;
         }
-
-        return con;
     }
+
+    
 }
