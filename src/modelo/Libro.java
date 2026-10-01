@@ -5,8 +5,10 @@
 package modelo;
 
 /**
- *
- * @author 2DAM
+ * Representa un libro  almacenando su identificador, título, autor, precio y cantidad disponible en stock. 
+ * 
+ * @author Adrian y Othman
+ * @since 1.0 
  */
 public class Libro {
    private String id;
