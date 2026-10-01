@@ -18,7 +18,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
     @Override
     public boolean insertar(Libro objeto) {
 
-        String sql = "INSERT INTO libros (id, titulo, autor, precio, stock) "
+        String sql = "INSERT INTO libro (id, titulo, autor, precio, stock) "
                    + "VALUES (?, ?, ?, ?, ?)";
 
         try (Connection con = ConexionDB.getConexion();
@@ -44,7 +44,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
 
         List<Libro> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM libros";
+        String sql = "SELECT * FROM libro";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql);
@@ -65,7 +65,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
     @Override
     public Libro obtenerPorId(String id) {
 
-        String sql = "SELECT * FROM libros WHERE id = ?";
+        String sql = "SELECT * FROM libro WHERE id = ?";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -90,7 +90,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
     @Override
     public boolean actualizar(Libro objeto) {
 
-        String sql = "UPDATE libros SET titulo = ?, autor = ?, "
+        String sql = "UPDATE libro SET titulo = ?, autor = ?, "
                    + "precio = ?, stock = ? WHERE id = ?";
 
         try (Connection con = ConexionDB.getConexion();
@@ -114,7 +114,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
     @Override
     public boolean eliminar(String id) {
 
-        String sql = "DELETE FROM libros WHERE id = ?";
+        String sql = "DELETE FROM libro WHERE id = ?";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -135,7 +135,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
 
         List<Libro> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM libros WHERE titulo LIKE ?";
+        String sql = "SELECT * FROM libro WHERE titulo LIKE ?";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -162,7 +162,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
 
         List<Libro> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM libros WHERE autor LIKE ?";
+        String sql = "SELECT * FROM libro WHERE autor LIKE ?";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -189,7 +189,7 @@ public class LibroDAOmysql implements GenericDao<Libro> {
 
         List<Libro> lista = new ArrayList<>();
 
-        String sql = "SELECT * FROM libros WHERE precio BETWEEN ? AND ?";
+        String sql = "SELECT * FROM libro WHERE precio BETWEEN ? AND ?";
 
         try (Connection con = ConexionDB.getConexion();
              PreparedStatement ps = con.prepareStatement(sql)) {
