@@ -7,8 +7,12 @@ package dao;
 import java.util.List;
 
 /**
+ * Define las operaciones que vamos a utilizar y gestión de objetos
+ * almacenados en un repositorio
  *
- * @author 2DAM
+ * @param <T> el tipo de objeto gestionado por el repositorio
+ * @author Adrian y Othman
+ * @since 1.0
  */
 public interface GenericDao<T> {
     boolean insertar(T objeto);

@@ -12,6 +12,14 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+/**
+ * Devuelve los métodos que vamos a utilizar en el main e implemntenta el GenericDao para tener los métodos principales
+ * y darles como hacerlos
+ *
+ * @author Adrian y Othman
+ * @version 1.0
+ * @since 1.0
+ */
 
 public class LibroDAOarchivo implements GenericDao<Libro> {
 
@@ -20,7 +28,12 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
     public LibroDAOarchivo(String archivo) {
         this.archivo = archivo;
     }
-
+    /**
+     * Con la lista de libros que tengas te da los parámetros de cada uno 
+     * 
+     * @return Los libros de la "biblioteca" y todos sus datos
+     * @throws Excepción En caso de haber algun error te lanza un mensaje de error
+     */
     @Override
     public List<Libro> obtenertodos() {
 
@@ -60,7 +73,13 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return lista;
     }
-
+    
+    /**
+     * Un método en la que puedes insertar un libro y poner todos sus valores
+     * 
+     * @param libro Le pasas un libro ya completo
+     * @return Te devuelve un booleano dependiendo si el método se ha ejecutado correctamente o no
+     */
     @Override
     public boolean insertar(Libro libro) {
 
@@ -93,7 +112,12 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
             return false;
         }
     }
-
+    
+    /**
+     * Poder obtener los valores de un libro por su id
+     * @param id El id del libro que tiene cada uno
+     * @return Te devuelve el libro y si hay algún error te da un mensaje de alerta y devuelve null
+     */
     @Override
     public Libro obtenerPorId(String id) {
 
@@ -137,7 +161,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return null;
     }
-
+    /**
+     * Poder eliminar a un libro por su id
+     * @param id El id del libro que tiene cada uno
+     * @return En caso de haberse eliminado correctamente devuelve un booleano con true, en caso contrario, false
+     */
     @Override
     public boolean eliminar(String id) {
 
@@ -163,7 +191,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return eliminado;
     }
-
+     /**
+      * Poder actualizar el dato del libro por su id
+      * @param libro 
+      * @return 
+      */
     @Override
     public boolean actualizar(Libro libro) {
 
