@@ -11,9 +11,25 @@ import modelo.Libro;
 
 import java.util.List;
 import java.util.Scanner;
+/**
+ * Clase de la aplicacion
+ * Permite seleccionar entre un archivo de texto y una base de datos
+ * para realizar operaciones sobre los libros
+ *
+ * @author Adrian y Othman
+ * @version 1.0
+ * @since 1.0
+ */
 
 public class Main {
-
+    
+    /**
+     * Inicia la aplicación y puede realizar consultas y operaciones
+     * de los libros 
+     *
+     * @param :args argumentos recibidos desde la línea de comandos
+     * @since 1.0
+     */
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
