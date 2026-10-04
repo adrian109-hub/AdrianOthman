@@ -27,6 +27,13 @@ public class Main {
      * Inicia la aplicación y puede realizar consultas y operaciones
      * de los libros 
      *
+     * <p>Las opciones disponibles son:</p>
+     * <ul>
+     * <li>Trabajar con un archivo de texto.</li>
+     * <li>Trabajar con una base de datos MySQL.</li>
+     * <li>Realizar consultas y operaciones sobre los libros.</li>
+     * </ul>
+     * 
      * @param args argumentos recibidos desde la línea de comandos
      * @since 1.0
      */

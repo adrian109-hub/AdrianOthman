@@ -17,7 +17,17 @@ import java.sql.SQLException;
  * Implementa las operaciones de acceso a datos de {@link Libro}
  * utilizando una base de datos MySQL.
  *
+ * <p>Las operaciones disponibles son:</p>
+ * <ul>
+ * <li>Insertar libros en la librería</li>
+ * <li>Consultar todos los libros</li>
+ * <li>Actualizar los datos de un libro.</li>
+ * <li>Eliminar libros por su id</li>
+ * <li>Buscar libros por título, autor o precio</li>
+ * </ul>
+ * 
  * @author Adrian y Othman
+ * @since 1.0
  */
 
 public class LibroDAOmysql implements GenericDao<Libro> {

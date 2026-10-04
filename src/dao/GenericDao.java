@@ -10,6 +10,16 @@ import java.util.List;
  * Define las operaciones que vamos a utilizar y gestión de objetos
  * almacenados en un repositorio
  *
+ * <p>Las operaciones disponibles son:</p>
+ * <ul>
+ * <li>Insertar objetos en el repositorio</li>
+ * <li>Obtener todos los objetos almacenados</li>
+ * <li>Buscar objetos por id</li>
+ * <li>Actualizar objetos</li>
+ * <li>Eliminar objetos del repositorio</li>
+ * <li>Buscar objetos por título, autor o rango de precio</li>
+ * </ul>
+ * 
  * @param <T> el tipo de objeto gestionado por el repositorio
  * @author Adrian y Othman
  * @since 1.0

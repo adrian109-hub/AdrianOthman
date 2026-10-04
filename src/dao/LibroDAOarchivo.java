@@ -13,9 +13,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 /**
- * Devuelve los métodos que vamos a utilizar en el main e implemntenta el GenericDao para tener los métodos principales
- * y darles como hacerlos
+ * Devuelve los métodos que vamos a utilizar en el main e implementa
+ * las operaciones definidas en {@link GenericDao}
  *
+ * <ul>
+ * <li>Permite insertar y eliminar libros</li>
+ * <li>Permite consultar libros por diferentes criterios</li>
+ * <li>Permite actualizar los datos de los libros</li>
+ * </ul>
+ * 
  * @author Adrian y Othman
  * @version 1.0
  * @since 1.0
