@@ -22,9 +22,15 @@ import java.util.Scanner;
  */
 
 public class LibroDAOarchivo implements GenericDao<Libro> {
-
+    /**
+    * Nombre o ruta del fichero donde se almacenan los libros
+    */
     private String archivo;
-
+    /**
+    * Crea un objeto {@code LibroDAOarchivo} asociado al fichero indicado
+    *
+    * @param archivo nombre o ruta del fichero donde se almacenan los libros
+    */
     public LibroDAOarchivo(String archivo) {
         this.archivo = archivo;
     }
@@ -32,7 +38,6 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
      * Con la lista de libros que tengas te da los parámetros de cada uno 
      * 
      * @return Los libros de la "biblioteca" y todos sus datos
-     * @throws Excepción En caso de haber algun error te lanza un mensaje de error
      */
     @Override
     public List<Libro> obtenertodos() {
@@ -75,10 +80,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
     }
     
     /**
-     * Un método en la que puedes insertar un libro y poner todos sus valores
+     * Inserta un libro a la biblioteca pasandole uno ya completado
      * 
      * @param libro Le pasas un libro ya completo
-     * @return Te devuelve un booleano dependiendo si el método se ha ejecutado correctamente o no
+     * @return {@code true} si el libro se elimina correctamente;
+     * {@code false} si se produce algún error
      */
     @Override
     public boolean insertar(Libro libro) {
@@ -114,9 +120,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
     }
     
     /**
-     * Poder obtener los valores de un libro por su id
+     * Obtiene los valores de un libro por su id
+     * 
      * @param id El id del libro que tiene cada uno
-     * @return Te devuelve el libro y si hay algún error te da un mensaje de alerta y devuelve null
+     * @return {@code null} si no se encuentra el libro o se produce
+     * un error al leer el fichero
      */
     @Override
     public Libro obtenerPorId(String id) {
@@ -162,9 +170,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
         return null;
     }
     /**
-     * Poder eliminar a un libro por su id
-     * @param id El id del libro que tiene cada uno
-     * @return En caso de haberse eliminado correctamente devuelve un booleano con true, en caso contrario, false
+     * Elimina un libro del fichero utilizando su id
+     * 
+     * @param id ide del libro que se desea eliminar
+     * @return {@code true} si el libro se elimina correctamente;
+     * {@code false} si no se encuentra el libro
      */
     @Override
     public boolean eliminar(String id) {
@@ -192,9 +202,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
         return eliminado;
     }
      /**
-      * Poder actualizar el dato del libro por su id
-      * @param libro 
-      * @return 
+      * Actualiza los datos de un libro utilizando su id
+      * 
+      * @param libro Le pasas un libro ya completo para actualizar el contenido
+      * @return {@code true} si el libro se ha encontrado correctamente;
+      * {@code false} si no se encuentra el libro
       */
     @Override
     public boolean actualizar(Libro libro) {
@@ -221,7 +233,12 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return actualizado;
     }
-
+    /**
+     * Obtiene los libros que coinciden con el título
+     * 
+     * @param titulo Escribes el título del libro para recibirlo
+     * @return Te devuelve el libro con ese título
+     */
     @Override
     public List<Libro> obtenerPorTitulo(String titulo) {
 
@@ -239,7 +256,12 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return resultado;
     }
-
+    /**
+     * Obtiene los libros por el autor
+     * 
+     * @param autor Escribes el autor para recibir sus libros
+     * @return Te devuelve el libro o libros que tenga ese autor en la librería
+     */
     @Override
     public List<Libro> obtenerPorAutor(String autor) {
 
@@ -257,7 +279,13 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return resultado;
     }
-
+    /**
+     * Recibes los libros que esten en un rango de precio que tu expreses
+     * 
+     * @param minimo El precio mínimo establecido para el rango de los libros
+     * @param maximo El precio máximo establecido para el rango de los libros
+     * @return Devuelve los libros establecido en el rango de precio
+     */
     @Override
     public List<Libro> obtenerPorPrecio(
             double minimo, double maximo) {
@@ -277,7 +305,11 @@ public class LibroDAOarchivo implements GenericDao<Libro> {
 
         return resultado;
     }
-
+    /**
+     * Guarda todos los libros de la lista en el fichero indicado
+     * 
+     * @param lista lista de libros que se desea guardar en el fichero
+     */
     private void guardarTodos(List<Libro> lista) {
 
         PrintWriter out = null;

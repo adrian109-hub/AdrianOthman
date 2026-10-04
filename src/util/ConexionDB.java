@@ -23,7 +23,6 @@ public class ConexionDB {
  *
  * @return la conexión establecida con la base de datos,
  * {@code null} si se produce un error al conectar
- * @throws Exception si se produce un error durante la conexión
  */
     
     public static Connection getConexion() {

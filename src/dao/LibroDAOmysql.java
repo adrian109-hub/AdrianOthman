@@ -29,7 +29,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      * @param objeto el libro que se desea insertar
      * @return true si el libro se inserta correctamente; false si se produce
      * un error durante la inserción
-     * @throws SQLException si se produce un error al insertar el libro
      */
 
 
@@ -61,7 +60,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      * Obtiene todos los libros almacenados en la base de datos.
      *
      * @return lista de todos los libros encontrados
-     * @throws SQLException si se produce un error al obtener los libros
      */
     @Override
     public List<Libro> obtenertodos() {
@@ -91,7 +89,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      *
      * @param id el identificador del libro que se desea buscar
      * @return el libro encontrado o null si no existe
-     * @throws SQLException si se produce un error al buscar el libro
      */
 
     @Override
@@ -125,7 +122,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      * @param objeto el libro con los datos que se desean actualizar
      * @return true si el libro se actualiza correctamente; false si se produce
      * un error durante la actualización
-     * @throws SQLException si se produce un error al actualizar el libro
      */
 
     @Override
@@ -158,7 +154,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      * @param id el identificador del libro que se desea eliminar
      * @return true si el libro se elimina correctamente; false si se produce
      * un error durante la eliminación
-     * @throws SQLException si se produce un error al eliminar el libro
      */
     @Override
     public boolean eliminar(String id) {
@@ -184,7 +179,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      *
      * @param titulo el texto que se desea buscar en el título
      * @return lista de libros cuyo título contiene el texto indicado
-     * @throws SQLException si se produce un error al buscar por título
      */
 
     @Override
@@ -219,7 +213,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      *
      * @param autor el texto que se desea buscar en el autor
      * @return lista de libros cuyo autor contiene el texto indicado
-     * @throws SQLException si se produce un error al buscar por autor
      */
 
     @Override
@@ -255,7 +248,6 @@ public class LibroDAOmysql implements GenericDao<Libro> {
      * @param minimo el precio mínimo de búsqueda
      * @param maximo el precio máximo de búsqueda
      * @return lista de libros cuyo precio se encuentra dentro del intervalo indicado
-     * @throws SQLException si se produce un error al buscar por precio
      */
 
     @Override

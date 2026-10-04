@@ -27,7 +27,7 @@ public class Main {
      * Inicia la aplicación y puede realizar consultas y operaciones
      * de los libros 
      *
-     * @param :args argumentos recibidos desde la línea de comandos
+     * @param args argumentos recibidos desde la línea de comandos
      * @since 1.0
      */
     public static void main(String[] args) {
