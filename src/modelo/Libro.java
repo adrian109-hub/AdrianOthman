@@ -7,6 +7,9 @@ package modelo;
 /**
  * Representa un libro  almacenando su identificador, título, autor, precio y cantidad disponible en stock. 
  * 
+ * <p>La clase permite consultar y modificar los datos del libro
+ * por sus métodos <code>get</code> y <code>set</code></p>
+ * 
  * @author Adrian y Othman
  * @since 1.0 
  */

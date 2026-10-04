@@ -16,6 +16,13 @@ import java.util.Scanner;
  * Permite seleccionar entre un archivo de texto y una base de datos
  * para realizar operaciones sobre los libros
  *
+ * <p>Las opciones disponibles son:</p>
+ * <ul>
+ * <li>Trabajar con un archivo de texto</li>
+ * <li>Trabajar con una base de datos</li>
+ * <li>Realizar consultas y operaciones sobre los libros</li>
+ * </ul>
+ * 
  * @author Adrian y Othman
  * @version 1.0
  * @since 1.0
@@ -27,12 +34,8 @@ public class Main {
      * Inicia la aplicación y puede realizar consultas y operaciones
      * de los libros 
      *
-     * <p>Las opciones disponibles son:</p>
-     * <ul>
-     * <li>Trabajar con un archivo de texto.</li>
-     * <li>Trabajar con una base de datos MySQL.</li>
-     * <li>Realizar consultas y operaciones sobre los libros.</li>
-     * </ul>
+     * <p>El usuario selecciona el tipo de repositorio y después
+     * utilizar las opciones dadas en el menú</p>
      * 
      * @param args argumentos recibidos desde la línea de comandos
      * @since 1.0

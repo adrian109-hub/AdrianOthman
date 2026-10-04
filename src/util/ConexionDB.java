@@ -11,7 +11,12 @@ import io.github.cdimascio.dotenv.Dotenv;
  * Proporciona métodos para establecer conexiones con la base de datos
  * utilizando las credenciales configuradas en las variables de entorno.
  *
- * @author Adiran y Othman
+ * <p>La conexión utiliza la URL, el usuario y la contraseña definidos
+ * mediante las variables de entorno <code>DB_URL</code>,
+ * <code>DB_USER</code> y <code>DB_PASSWORD</code> y con estos se completa
+ * automáticamente con .env</p>
+ * 
+ * @author Adrian y Othman
  * @since 1.0
  */
 
