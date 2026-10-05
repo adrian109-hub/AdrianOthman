@@ -1,0 +1,43 @@
+# Base de datos de **Páginas de Villa Serena**
+
+> [!NOTE]
+> Este documento tiene la documentación de la base de datos de la librería **Páginas de Villa Serena**. El contenido de este son ficticios y cualquier parecido con la realidad es pura coincidencia.
+
+---
+
+## 1. Resumen del caso
+
+**Páginas de Villa Serena** consta de *3 tiendas físicas*  repartidas por el mapa de Zaragoza:
+- **Centro**
+- **Ribera**
+- **Universidad**
+
+Actualmente, cada tienda gestiona sus propios productos por individual, lo que hace dificil controlar el stock en cada uno.
+
+Por eso las tiendas de **Páginas de Villa Serena**, necesita una base de datos, para facilitar esta gestión.
+
+Esta base de datos contendrá:
+
+- Las **tiendas** y sus datos
+- Los **libros** disponibles en cada tienda
+- Las **editoriales** de cada libro
+- Los **autores** de los libros
+- El **inventario** de cada tienda
+- Los **empleados** y quienes trabajan en cada tienda
+- Los **clientes** y la información de cada uno
+- Las **ventas** realizadas
+- Los **tickets** hecho en cada tienda
+
+## 2. Análisis del caso
+### 2.1 Entidades y atributos
+### 2.2 Relaciones
+### 2.3 Datos descartados
+## 3. Reglas de negocio
+## 4. Diagrama entidad-relación
+## 5. Modelo lógico
+## 6. Script SQL (schema.sql)
+## 7. Diccionario de datos
+## 8. Decisiones de diseño
+## 9. Datos de prueba
+## 10. Consultas de prueba
+## 11. Limitaciones y mejoras futuras
