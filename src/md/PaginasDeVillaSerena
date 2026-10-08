@@ -171,7 +171,30 @@ Representa una compra realizada por un cliente.
 ---
 
 ### 2.2 Relaciones
+| **Relación** | **Cardinalidad** | **Descripción** |
+| :------------: | :----------------: | :---------------: |
+| Editorial - Libro | 1:N | Una editorial puede publicar muchos libros, pero cada libro pertenece a una única editorial. |
+| Libro - Autor | N:M | Un libro puede tener varios autores y un autor puede participar en varios libros. |
+| Libro - Tienda | N:M | Un libro puede estar en varias tiendas y una tienda puede tener muchos libros. |
+| Tienda - Empleado | 1:N | Una tienda puede tener varios empleados, pero cada empleado trabaja en una única tienda. |
+| Tienda - Pedido | 1:N | Una tienda puede tener muchos pedidos, pero cada pedido pertenece a una tienda. |
+| Empleado - Pedido | 1:N | Un empleado puede atender muchos pedidos, pero cada pedido lo atiende un empleado. |
+| Cliente - Pedido | 1:N | Un cliente puede realizar muchos pedidos, pero cada pedido pertenece a un cliente. |
+| Pedido - Libro | N:M | Un pedido puede contener varios libros y un libro puede aparecer en muchos pedidos. |
+
+> [!TIP]
+> Las relaciones **N:M** se resuelven mediante tablas intermedias. Estas son `libro_autor`, `inventario` y `linea_pedido`.
+
+---
+
 ### 2.3 Datos descartados
+#### Datos mencionados o deducidos que no se almacena
+| **Dato** | **Motivo por el que no se almacena** |
+| :--------: | :------------------------------------: |
+| Total del pedido | Se puede calcular sumando `cantidad * precio_unitario` de cada línea. |
+| Total de libros vendidos | Puede calcularse a partir de los pedidos. |
+| Stock total de una tienda | Puede obtenerse sumando el stock de sus libros. |
+
 ## 3. Reglas de negocio
 ## 4. Diagrama entidad-relación
 ## 5. Modelo lógico
