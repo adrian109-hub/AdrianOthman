@@ -221,6 +221,10 @@ Representa una compra realizada por un cliente.
 21. El stock no puede ser negativo.
 
 ## 4. Diagrama entidad-relación
+
+#### Este diagrama presenta sus entidades y las relaciones entre sí
+![Diagrama entidad-relación de la librería](diagrama_libreria.png)
+
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
 ## 7. Diccionario de datos
