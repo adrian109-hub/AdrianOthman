@@ -196,6 +196,30 @@ Representa una compra realizada por un cliente.
 | Stock total de una tienda | Puede obtenerse sumando el stock de sus libros. |
 
 ## 3. Reglas de negocio
+
+#### Lista de reglas que se aplican a la vida real
+1. Cada libro tiene un id único.
+2. Cada libro se identifica mediante un **ISBN de 13 cifras**.
+3. Cada libro pertenece a una única editorial.
+4. Una editorial puede publicar varios libros.
+5. Un libro puede tener uno o varios autores.
+6. Un autor puede estar en varios libros.
+7. Cada autor de un libro debe poner si es *principal* o *colaborador*.
+8. Una tienda puede tener muchos libros en su inventario.   
+9. Un libro puede estar disponible en varias tiendas.
+10. Si un libro no está en una tienda, no es necesario crearlo .
+11. Cada empleado trabaja en una única tienda.
+12. Los puestos permitidos son *librero*, *cajero* y *encargado*.
+13. Un pedido se realiza siempre en una única tienda.
+14. Cada pedido pertenece a un único cliente.
+15. Un cliente puede realizar varios pedidos.
+16. Un pedido puede contener varios libros.
+17. Los métodos de pago permitidos son *efectivo*, *tarjeta* y *bizum*.
+18. Los estados permitidos son *preparado*, *entregado* y *cancelado*.
+19. Un cliente puede ser socio o no socio.
+20. El correo electrónico del cliente debe ser único.
+21. El stock no puede ser negativo.
+
 ## 4. Diagrama entidad-relación
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
