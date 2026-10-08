@@ -30,6 +30,146 @@ Esta base de datos contendrá:
 
 ## 2. Análisis del caso
 ### 2.1 Entidades y atributos
+### Se han identificado las siguientes entidades:
+
+| **Entidad** | **Atributos** |
+|:-----------:| :-------------: |
+| **Tienda** | `id_tienda`, `nombre`, `direccion`, `telefono`, `ciudad` |
+| **Editorial** | `id_editorial`, `nombre`, `pais`, `telefono_contacto` |
+| **Libro** | `isbn`, `titulo`, `anio_publicacion`, `paginas`, `precio_catalogo`, `id_editorial` |
+| **Autor** | `id_autor`, `nombre`, `nacionalidad`, `anio_nacimiento` |
+| **Empleado** | `dni`, `nombre`, `apellidos`, `puesto`, `fecha_contratacion`, `correo`, `id_tienda` |
+| **Cliente** | `id_cliente`, `nombre`, `correo`, `telefono`, `es_socio`, `fecha_alta` |
+| **Pedido** | `id_pedido`, `fecha`, `metodo_pago`, `estado`, `id_tienda`, `dni_empleado`, `id_cliente` |
+| **Inventario** | `isbn`, `id_tienda`, `stock`, `fecha_ultimo_recuento` |
+| **Libro_Autor** | `isbn`, `id_autor`, `tipo_autor` |
+| **Linea_Pedido** | `id_pedido`, `isbn`, `cantidad`, `precio_unitario` |
+
+--- 
+
+
+### Una vez dichas las entidades daremos una descripción de cada una:
+
+### Entidad: **Tienda**
+#### Representa cada establecimiento de la librería.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_tienda` | Id único de la tienda. |
+| `nombre` | Nombre de la tienda. |
+| `direccion` | Dirección física. |
+| `telefono` | Teléfono de contacto. |
+| `ciudad` | Ciudad donde se encuentra. |
+
+---
+
+### Entidad: **Editorial**
+#### Representa las editoriales que publican los libros.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_editorial` | Id único de la editorial. |
+| `nombre` | Nombre de la editorial. |
+| `pais` | País de la editorial. |
+| `telefono_contacto` | Teléfono utilizado para contactar con la editorial. |
+
+---
+
+### Entidad: **Libro**
+#### Representa los libros disponibles en el catálogo.
+| **Atributo** | **Descripción** |
+| :------------ | --------------- |
+| `isbn` | ISBN de 13 cifras. |
+| `titulo` | Título del libro. |
+| `anio_publicacion` | Año en el que fue publicado. |
+| `paginas` | Número de páginas. |
+| `precio_catalogo` | Precio del libro. |
+| `id_editorial` | Editorial del libro. |
+
+---
+
+### Entidad: **Autor**
+#### Representa a los autores de los libros.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_autor` | Id único del autor. |
+| `nombre` | Nombre completo del autor. |
+| `nacionalidad` | Nacionalidad del autor. |
+| `anio_nacimiento` | Año de nacimiento. |
+
+---
+
+### Entidad: **Empleado**
+Representa a los empleados de la librería.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `dni` | DNI del empleado. |
+| `nombre` | Nombre del empleado. |
+| `apellidos` | Apellidos del empleado. |
+| `puesto` | Puesto: *librero*, *cajero* o *encargado*. |
+| `fecha_contratacion` | Fecha en la que comenzó a trabajar. |
+| `correo` | Correo electrónico. |
+| `id_tienda` | Tienda en la que trabaja. |
+
+---
+
+### Entidad: **Cliente**
+#### Representa a las personas que realizan compras.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_cliente` | Id único del cliente. |
+| `nombre` | Nombre completo. |
+| `correo` | Correo electrónico. |
+| `telefono` | Teléfono del cliente. | | `es_socio` | Indica si el cliente es socio. |
+| `fecha_alta` | Fecha de registro del cliente. |
+
+---
+
+### Entidad: **Pedido**
+Representa una compra realizada por un cliente.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_pedido` | Id único del pedido. |
+| `fecha` | Fecha y hora de la compra. |
+| `metodo_pago` | *Efectivo*, *tarjeta* o *bizum*. |
+| `estado` | *Preparado*, *entregado* o *cancelado*. |
+| `id_tienda` | Tienda donde se realiza el pedido. |
+| `dni_empleado` | DNI del empleado que atiende el pedido. |
+| `id_cliente` | Cliente que realiza la compra. | 
+
+---
+
+### Entidad: **Inventario**
+#### Representa el stock de cada libro en cada tienda.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `isbn` | Libro almacenado. |
+| `id_tienda` | Tienda donde se encuentra. |
+| `stock` | Número de unidades disponibles. |
+| `fecha_ultimo_recuento` | Fecha del último recuento del stock. |
+
+---
+
+### Entidad: **Libro_Autor**
+#### Es una tabla intermedia para relacionar libros y autores.
+
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `isbn` | Libro relacionado. |
+| `id_autor` | Autor relacionado. |
+| `tipo_autor` | Indica si es *principal* o *colaborador*.|
+
+---
+
+### Entidad: **Linea_Pedido**
+#### Representa cada libro incluido en un pedido.
+| **Atributo** | **Descripción** |
+| :------------: | :---------------: |
+| `id_pedido` | Id del pedido al que pertenece. |
+| `isbn` | Libro comprado. |
+| `cantidad` | Número de unidades compradas. |
+| `precio_unitario` | Precio pagado por unidad. |
+
+---
+
 ### 2.2 Relaciones
 ### 2.3 Datos descartados
 ## 3. Reglas de negocio
