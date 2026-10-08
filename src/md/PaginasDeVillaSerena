@@ -225,6 +225,135 @@ Representa una compra realizada por un cliente.
 #### Este diagrama presenta sus entidades y las relaciones entre sí
 ![Diagrama entidad-relación de la librería](diagrama_libreria.png)
 
+### Relaciones del diagrama
+
+| **Relación** | **Tipo** | **Cómo se resuelve** |
+| ------------ | -------- | -------------------- |
+| Editorial - Libro | 1:N | `libro.id_editorial` |
+| Libro - Autor | N:M | `libro_autor` |
+| Libro - Tienda | N:M | `inventario` |
+| Tienda - Empleado | 1:N | `empleado.id_tienda` |
+| Tienda - Pedido | 1:N | `pedido.id_tienda` |
+| Empleado - Pedido | 1:N | `pedido.dni_empleado` |
+| Cliente - Pedido | 1:N | `pedido.id_cliente` |
+| Pedido - Libro | N:M | `linea_pedido` |
+
+---
+
+## 5. Modelo lógico
+#### La traducción del diagrama a tablas generalmente normales
+### `tienda`
+| **Columna** | **Clave** | **Referencia** |
+| ----------- | --------- | -------------- |
+| `id_tienda` | PK | |
+| `nombre` | | |
+| `direccion` | | |
+| `telefono` | | |
+| `ciudad` | | |
+
+---
+
+### `editorial`
+| **Columna** | **Clave** | **Referencia** |
+| ----------- | --------- | -------------- |
+| `id_editorial` | PK | |
+| `nombre` | | |
+| `pais` | | |
+| `telefono_contacto` | ||
+
+---
+
+### `libro`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `isbn` | PK | |
+| `titulo` | | |
+| `anio_publicacion` | | |
+| `paginas` | | |
+| `precio_catalogo` | | |
+| `id_editorial` | FK | `editorial.id_editorial` |
+
+---
+
+### `autor`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `id_autor` | PK | |
+| `nombre` | | |
+| `nacionalidad` | | |
+| `anio_nacimiento` | | |
+
+---
+### `libro_autor`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `isbn` | PK, FK | `libro.isbn` |
+| `id_autor` | PK, FK | `autor.id_autor` |
+| `tipo_autor` | | |
+
+La PK está formada por: `(isbn, id_autor)`
+
+---
+
+### `inventario`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `isbn` | PK, FK | `libro.isbn` |
+| `id_tienda` | PK, FK | `tienda.id_tienda` |
+| `stock` | | |
+| `fecha_ultimo_recuento` | | |
+
+La PK está formada por: `(isbn, id_tienda)`
+
+---
+### `empleado`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `dni` | PK | |
+| `nombre` | | |
+| `apellidos` | | |
+| `puesto` | | |
+| `fecha_contratacion` | | |
+| `correo` | | |
+| `id_tienda` | FK | `tienda.id_tienda` |
+
+---
+
+### `cliente`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `id_cliente` | PK | |
+| `nombre` | | |
+| `correo` | UNIQUE | |
+| `telefono` | | |
+| `es_socio` | | |
+| `fecha_alta` | | |
+
+---
+
+### `pedido`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `id_pedido` | PK | |
+| `fecha` | | |
+| `metodo_pago` | | |
+| `estado` | | |
+| `id_tienda` | FK | `tienda.id_tienda` |
+| `dni_empleado` | FK | `empleado.dni` | | `id_cliente` | FK | `cliente.id_cliente` |
+
+---
+### `linea_pedido`
+| **Columna** | **Clave** | **Referencia** |
+| :-----------: | :---------: | :--------------: |
+| `id_pedido` | PK, FK | `pedido.id_pedido` |
+| `isbn` | PK, FK | `libro.isbn` |
+| `cantidad` | | |
+| `precio_unitario` | | |
+
+La PK está formada por: `(id_pedido, isbn)`
+
+---
+
 ## 5. Modelo lógico
 ## 6. Script SQL (schema.sql)
 ## 7. Diccionario de datos
