@@ -515,7 +515,131 @@ CREATE TABLE linea_pedido (
     CONSTRAINT chk_linea_precio
         CHECK (precio_unitario >= 0)
 );
+
+--- 
+
 ## 7. Diccionario de datos
+
+### Tabla `tienda`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `id_tienda` | `INT` | Sí | Ide único de la tienda. Es la PK. |
+| `nombre` | `VARCHAR(100)` | Sí | Nombre de la tienda. |
+| `direccion` | `VARCHAR(150)` | Sí | Dirección física de la tienda. |
+| `telefono` | `VARCHAR(20)` | Sí | Número de teléfono. |
+| `ciudad` | `VARCHAR(100)` | Sí | Ciudad en la que se encuentra la tienda. |
+
+---
+
+### Tabla `editorial`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `id_editorial` | `INT` | Sí | Id único de la editorial. |
+| `nombre` | `VARCHAR(100)` | Sí | Nombre de la editorial. |
+| `pais` | `VARCHAR(100)` | Sí | País de la editorial. |
+| `telefono_contacto` | `VARCHAR(20)` | No | Teléfono de contacto. |
+
+---
+
+### Tabla `libro`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `isbn` | `CHAR(13)` | Sí | ISBN de 13 cifras del libro. |
+| `titulo` | `VARCHAR(200)` | Sí | Título del libro. |
+| `anio_publicacion` | `INT` | Sí | Año de publicación. |
+| `paginas` | `INT` | Sí | Número de páginas.. |
+| `precio_catalogo` | `DECIMAL(10,2)` | Sí | Precio del catálogo. |
+| `id_editorial` | `INT` | Sí | Editorial que publica el libro. |
+
+---
+
+### Tabla `autor`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `id_autor` | `INT` | Sí | Id único del autor. |
+| `nombre` | `VARCHAR(100)` | Sí | Nombre completo. |
+| `nacionalidad` | `VARCHAR(100)` | Sí | Nacionalidad. |
+| `anio_nacimiento` | `INT` | Sí | Año de nacimiento. |
+
+---
+
+### Tabla `libro_autor`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `isbn` | `CHAR(13)` | Sí | ISBN del libro relacionado. |
+| `id_autor` | `INT` | Sí | Autor relacionado. |
+| `tipo_autor` | `ENUM` | Sí | Indica si el autor es *principal* o *colaborador*. |
+
+---
+
+### Tabla `inventario`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `isbn` | `CHAR(13)` | Sí | Isbn de 13 cibras que pertenece el libro. |
+| `id_tienda` | `INT` | Sí | Tienda donde se encuentra el libro. |
+| `stock` | `INT` | Sí | Número de unidades disponibles. |
+| `fecha_ultimo_recuento` | `DATE` | Sí | Fecha del último recuento. |
+
+---
+
+### Tabla `empleado`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `dni` | `VARCHAR(9)` | Sí | Id del empleado. |
+| `nombre` | `VARCHAR(100)` | Sí | Nombre. |
+| `apellidos` | `VARCHAR(150)` | Sí | Apellidos. |
+| `puesto` | `ENUM` | Sí | Puesto del empleado. |
+| `fecha_contratacion` | `DATE` | Sí | Fecha de contratación. |
+| `correo` | `VARCHAR(150)` | Sí | Correo electronico. |
+| `id_tienda` | `INT` | Sí | Tienda donde trabaja. |
+
+---
+
+### Tabla `cliente`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| :-----------: | :--------: | :---------------: | :---------------: |
+| `id_cliente` | `INT` | Sí | Id único del cliente. |
+| `nombre` | `VARCHAR(150)` | Sí | Nombre completo. |
+| `correo` | `VARCHAR(150)` | Sí | Correo electrónico único. |
+| `telefono` | `VARCHAR(20)` | No | Número de teléfono. |
+| `es_socio` | `BOOLEAN` | Sí | Indica si el cliente es socio o no. |
+| `fecha_alta` | `DATE` | Sí | Fecha de registro. |
+
+---
+
+### Tabla `pedido`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| ----------- | -------- | --------------- | --------------- |
+| `id_pedido` | `INT` | Sí | Id único del pedido. |
+| `fecha` | `DATETIME` | Sí | Fecha y hora de la compra. |
+| `metodo_pago` | `ENUM` | Sí | Forma de pago utilizada. |
+| `estado` | `ENUM` | Sí | Estado del pedido. |
+| `id_tienda` | `INT` | Sí | Tienda donde se realizo. |
+| `dni_empleado` | `VARCHAR(9)` | Sí | Empleado que gestiono el pedido. |
+| `id_cliente` | `INT` | Sí | Cliente que realizo la compra. |
+
+---
+
+### Tabla `linea_pedido`
+
+| **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
+| ----------- | -------- | --------------- | --------------- |
+| `id_pedido` | `INT` | Sí | Pedido al que pertenece. |
+| `isbn` | `CHAR(13)` | Sí | Isbn del libro comprado. |
+| `cantidad` | `INT` | Sí | Número de unidades compradas. |
+| `precio_unitario` | `DECIMAL(10,2)` | Sí | Precio pagado por unidad. |
+
+---
+
 ## 8. Decisiones de diseño
 ## 9. Datos de prueba
 ## 10. Consultas de prueba
