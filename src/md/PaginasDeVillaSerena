@@ -633,7 +633,7 @@ CREATE TABLE linea_pedido (
 
 | **Columna** | **Tipo** | **Obligatorio** | **Descripción** |
 | ----------- | -------- | --------------- | --------------- |
-| `id_pedido` | `INT` | Sí | Pedido al que pertenece. |
+| `id_pedido` | `INT` | Si | Pedido al que pertenece. |
 | `isbn` | `CHAR(13)` | Sí | Isbn del libro comprado. |
 | `cantidad` | `INT` | Sí | Número de unidades compradas. |
 | `precio_unitario` | `DECIMAL(10,2)` | Sí | Precio pagado por unidad. |
@@ -641,6 +641,107 @@ CREATE TABLE linea_pedido (
 ---
 
 ## 8. Decisiones de diseño
+### Decision 1: Tabla intermedia `libro_autor`
+
+**Qué se ha decidido:**
+
+Se ha creado la tabla `libro_autor`.
+
+**Por qué:**
+
+Un libro puede tener varios autores y un autor puede participar en varios libros. Por tanto, la relación es **N:M**.
+
+**Alternativa descartada:**
+
+Guardar varios autores dentro de una única columna de `libro`.
+
+Esta alternativa dificultaría las consultas y produciría información poco estructurada.
+
+---
+
+### Decisión 2: Tabla `inventario`
+
+**Qué se ha decidido:**
+
+Se ha creado la tabla `inventario` para relacionar libros y tiendas.
+
+**Por qué:**
+
+Cada tienda puede tener una cantidad diferente de un mismo libro.
+
+**Alternativa descartada:**
+
+Añadir una columna de stock para cada tienda dentro de `libro`.
+
+Esto haría que la base de datos fuese poco flexible si se añadieran nuevas tiendas.
+
+---
+
+### Decisión 3: Guardar el precio en `linea_pedido`
+
+**Qué se ha decidido:**
+
+Se almacena `precio_unitario` en cada línea de pedido.
+
+**Por qué:**
+
+El precio de catalogo puede cambiar con el tiempo, pero el pedido debe conservar el precio que se cobró realmente.
+
+**Alternativa descartada:**
+
+Utilizar siempre `libro.precio_catalogo`.
+
+Esto haría que las ventas antiguas pudieran mostrar precios incorrectos.
+
+---
+
+### Decisión 4: No almacenar el total del pedido
+
+**Qué se ha decidido:**
+
+No se crea una columna `total` en `pedido`.
+
+**Por qué:**
+
+El total puede calcularse mediante:
+
+
+cantidad × precio_unitario
+
+
+para cada linea del pedido.
+
+**Alternativa descartada:**
+
+Guardar el total directamente.
+
+Esto podría provocar problemas si se modificase una linea y no se actualizase el total.
+
+---
+
+### Decisión 5: Utilizar valores controlados
+
+**Qué se ha decidido:**
+
+Se utilizan `ENUM` para determinados campos:
+
+- `puesto`
+- `metodo_pago`
+- `estado`
+- `tipo_autor`
+
+**Por qué:**
+
+Permite limitar los valores a las opciones válidas.
+
+**Alternativa descartada:**
+
+Utilizar texto libre mediante `VARCHAR`.
+
+Esto permitiría introducir valores diferentes para representar la misma situación.
+
+> [!NOTE]
+> Las decisiones anteriores se han tomado buscando que el modelo represente el funcionamiento de la libreria y evite informacion duplicada o inconsistente.
 ## 9. Datos de prueba
 ## 10. Consultas de prueba
 ## 11. Limitaciones y mejoras futurasaciones y mejoras futuras
