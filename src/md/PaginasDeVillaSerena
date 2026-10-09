@@ -742,6 +742,145 @@ Esto permitiría introducir valores diferentes para representar la misma situaci
 
 > [!NOTE]
 > Las decisiones anteriores se han tomado buscando que el modelo represente el funcionamiento de la libreria y evite informacion duplicada o inconsistente.
+
+--- 
+
 ## 9. Datos de prueba
+
+### Sirve para comprobar el funcionamiento del modelo
+
+### Tiendas
+
+INSERT INTO tienda
+(nombre, direccion, telefono, ciudad)
+VALUES
+('Centro', 'Calle Mayor 15', '976111111', 'Villa Serena'),
+('Ribera', 'Avenida del Río 28', '976222222', 'Aldeaverde'),
+('Universidad', 'Calle Universitaria 7', '976333333', 'Villa Serena');
+
+### Editoriales
+
+INSERT INTO editorial
+(nombre, pais, telefono_contacto)
+VALUES
+('Alfaguara', 'España', '911111111'),
+('Alianza Editorial', 'España', '912222222'),
+('Plaza & Janés', 'España', '913333333');
+
+
+### Autores
+
+INSERT INTO autor
+(nombre, nacionalidad, anio_nacimiento)
+VALUES
+('Julio Cortázar', 'Argentina', 1914),
+('Jorge Luis Borges', 'Argentina', 1899),
+('Isabel Allende', 'Chile', 1942),
+('Juan Rulfo', 'México', 1917);
+
+### Libros
+
+INSERT INTO libro
+(isbn, titulo, anio_publicacion, paginas, precio_catalogo, id_editorial)
+VALUES
+('9780000000001', 'Rayuela', 1963, 736, 16.50, 1),
+('9780000000002', 'Ficciones', 1944, 224, 12.00, 2),
+('9780000000003', 'Cuentos de Eva Luna', 1989, 256, 14.90, 3),
+('9780000000004', 'Antología del cuento', 1975, 320, 18.00, 2),
+('9780000000005', 'Pedro Páramo', 1955, 144, 10.00, 1);
+
+### Autores de cada libro
+
+
+INSERT INTO libro_autor
+(isbn, id_autor, tipo_autor)
+VALUES
+('9780000000001', 1, 'principal'),
+('9780000000002', 2, 'principal'),
+('9780000000003', 3, 'principal'),
+('9780000000004', 1, 'principal'),
+('9780000000004', 2, 'colaborador'),
+('9780000000005', 4, 'principal');
+
+### Empleados
+
+INSERT INTO empleado
+(dni, nombre, apellidos, puesto, fecha_contratacion, correo, id_tienda)
+VALUES
+('12345678A', 'Laura', 'Gómez Martín', 'encargado', '2022-03-15', 'laura@paginasvillaserena.es', 1),
+('23456789B', 'Carlos', 'Navarro Ruiz', 'librero', '2023-06-10', 'carlos@paginasvillaserena.es', 1),
+('34567890C', 'Marta', 'Sánchez López', 'cajero', '2024-01-20', 'marta@paginasvillaserena.es', 2),
+('45678901D', 'David', 'Moreno Pérez', 'encargado', '2021-09-05', 'david@paginasvillaserena.es', 2),
+('56789012E', 'Ana', 'Romero Díaz', 'librero', '2024-04-12', 'ana@paginasvillaserena.es', 3),
+('67890123F', 'Pablo', 'Serrano Gil', 'cajero', '2025-02-01', 'pablo@paginasvillaserena.es', 3);
+
+### Clientes
+
+INSERT INTO cliente
+(nombre, correo, telefono, es_socio, fecha_alta)
+VALUES
+('Andrés Pérez', 'andres.p@correo.es', '600111111', TRUE, '2025-01-10'),
+('Lucía Martín', 'lucia.m@correo.es', '600222222', TRUE, '2025-04-18'),
+('Daniel García', 'daniel.g@correo.es', NULL, FALSE, '2026-01-20'),
+('Sofía Pérez', 'sofia.p@correo.es', '600444444', TRUE, '2026-02-15');
+
+### Inventario
+
+INSERT INTO inventario
+(isbn, id_tienda, stock, fecha_ultimo_recuento)
+VALUES
+('9780000000001', 1, 5, '2026-10-01'),
+('9780000000002', 1, 8, '2026-10-01'),
+('9780000000003', 1, 3, '2026-10-01'),
+('9780000000004', 1, 0, '2026-10-01'),
+('9780000000005', 1, 4, '2026-10-01'),
+
+('9780000000001', 2, 2, '2026-10-02'),
+('9780000000002', 2, 0, '2026-10-02'),
+('9780000000003', 2, 5, '2026-10-02'),
+('9780000000004', 2, 2, '2026-10-02'),
+('9780000000005', 2, 1, '2026-10-02'),
+
+('9780000000001', 3, 0, '2026-10-03'),
+('9780000000002', 3, 4, '2026-10-03'),
+('9780000000003', 3, 2, '2026-10-03'),
+('9780000000004', 3, 5, '2026-10-03'),
+('9780000000005', 3, 3, '2026-10-03');
+
+### Pedidos
+
+INSERT INTO pedido
+(fecha, metodo_pago, estado, id_tienda, dni_empleado, id_cliente)
+VALUES
+('2026-10-01 10:30:00', 'tarjeta', 'entregado', 1, '12345678A', 1),
+('2026-10-01 12:15:00', 'efectivo', 'entregado', 1, '23456789B', 2),
+('2026-10-02 17:20:00', 'bizum', 'preparado', 2, '34567890C', 3),
+('2026-10-03 11:00:00', 'tarjeta', 'entregado', 3, '56789012E', 1),
+('2026-10-04 18:45:00', 'tarjeta', 'entregado', 1, '12345678A', 4);
+
+
+### Líneas de pedido
+
+INSERT INTO linea_pedido
+(id_pedido, isbn, cantidad, precio_unitario)
+VALUES
+(1, '9780000000001', 2, 16.50),
+(1, '9780000000002', 1, 12.00),
+
+(2, '9780000000003', 1, 14.90),
+(2, '9780000000004', 2, 18.00),
+
+(3, '9780000000001', 1, 16.50),
+(3, '9780000000005', 2, 10.00),
+
+(4, '9780000000002', 3, 12.00),
+(4, '9780000000003', 1, 14.90),
+
+(5, '9780000000001', 1, 16.50),
+(5, '9780000000004', 1, 18.00),
+(5, '9780000000005', 1, 10.00);
+
+---
+
 ## 10. Consultas de prueba
 ## 11. Limitaciones y mejoras futurasaciones y mejoras futuras
