@@ -883,4 +883,205 @@ VALUES
 ---
 
 ## 10. Consultas de prueba
+### 10.2 Libro más vendido en cada tienda
+
+**Pregunta:** ¿Cuál es el libro más vendido en cada tienda?
+
+
+WITH ventas AS (
+    SELECT
+        p.id_tienda,
+        l.isbn,
+        l.titulo,
+        SUM(lp.cantidad) AS unidades_vendidas
+    FROM pedido p
+    JOIN linea_pedido lp
+        ON p.id_pedido = lp.id_pedido
+    JOIN libro l
+        ON lp.isbn = l.isbn
+    WHERE p.estado <> 'cancelado'
+    GROUP BY p.id_tienda, l.isbn, l.titulo
+),
+ranking AS (
+    SELECT
+        id_tienda,
+        isbn,
+        titulo,
+        unidades_vendidas,
+        (SELECT COUNT(*)
+         FROM ventas v2
+         WHERE v2.id_tienda = ventas.id_tienda
+           AND v2.unidades_vendidas > ventas.unidades_vendidas
+        ) + 1 AS posicion
+    FROM ventas
+)
+SELECT
+    t.nombre AS tienda,
+    r.titulo,
+    r.unidades_vendidas
+FROM ranking r
+JOIN tienda t
+    ON r.id_tienda = t.id_tienda
+WHERE r.posicion = 1;
+```
+
+**Resultado esperado:**
+
+| **Tienda** | **Libro** | **Unidades vendidas** |
+| ---------- | --------- | ---------------------: |
+| Centro | Rayuela | 3 |
+| Ribera | Pedro Páramo | 2 |
+| Universidad | Ficciones | 3 |
+
+---
+
+### 10.3 Facturación anual por tienda
+
+**Pregunta:** ¿Cuánto ha facturado cada tienda durante el año?
+
+```sql
+SELECT
+    t.nombre AS tienda,
+    SUM(lp.cantidad * lp.precio_unitario) AS facturacion
+FROM pedido p
+JOIN tienda t
+    ON p.id_tienda = t.id_tienda
+JOIN linea_pedido lp
+    ON p.id_pedido = lp.id_pedido
+WHERE YEAR(p.fecha) = 2026
+AND p.estado <> 'cancelado'
+GROUP BY t.id_tienda, t.nombre
+ORDER BY facturacion DESC;
+```
+
+**Resultado esperado:**
+
+| **Tienda** | **Facturación** |
+| ---------- | --------------: |
+| Centro | 113.90 € |
+| Universidad | 50.90 € |
+| Ribera | 36.50 € |
+
+---
+
+### 10.4 Clientes con más de dos pedidos
+
+**Pregunta:** ¿Qué clientes han hecho más de dos pedidos?
+
+```sql
+SELECT
+    c.nombre,
+    COUNT(p.id_pedido) AS numero_pedidos
+FROM cliente c
+JOIN pedido p
+    ON c.id_cliente = p.id_cliente
+GROUP BY c.id_cliente, c.nombre
+HAVING COUNT(p.id_pedido) > 2;
+```
+
+**Resultado esperado:**
+
+No se obtiene ningún resultado porque ninguno de los clientes ficticios ha realizado más de dos pedidos.
+
+---
+
+### 10.5 Libros agotados en una tienda y disponibles en otra
+
+**Pregunta:** ¿Qué libros están agotados en una tienda pero disponibles en otra?
+
+```sql
+SELECT DISTINCT
+    l.titulo
+FROM libro l
+JOIN inventario i1
+    ON l.isbn = i1.isbn
+JOIN inventario i2
+    ON l.isbn = i2.isbn
+WHERE i1.stock = 0
+AND i2.stock > 0;
+```
+
+**Resultado esperado:**
+
+| **Libro** |
+| --------- |
+| Rayuela |
+| Ficciones |
+| Antología del cuento |
+
+---
+
+### 10.6 Empleado que ha atendido más pedidos
+
+**Pregunta:** ¿Qué empleado ha atendido más pedidos?
+
+```sql
+SELECT
+    e.nombre,
+    e.apellidos,
+    COUNT(p.id_pedido) AS numero_pedidos
+FROM empleado e
+JOIN pedido p
+    ON e.dni = p.dni_empleado
+GROUP BY e.dni, e.nombre, e.apellidos
+ORDER BY numero_pedidos DESC
+LIMIT 1;
+```
+
+**Resultado esperado:**
+
+| **Empleado** | **Pedidos atendidos** |
+| ------------ | ---------------------: |
+| Laura Gómez Martín | 2 |
+
+---
+
+### 10.7 Autores con libros de más de una editorial
+
+**Pregunta:** ¿Qué autores tienen libros publicados por más de una editorial?
+
+```sql
+SELECT
+    a.nombre,
+    COUNT(DISTINCT l.id_editorial) AS numero_editoriales
+FROM autor a
+JOIN libro_autor la
+    ON a.id_autor = la.id_autor
+JOIN libro l
+    ON la.isbn = l.isbn
+GROUP BY a.id_autor, a.nombre
+HAVING COUNT(DISTINCT l.id_editorial) > 1;
+```
+
+**Resultado esperado:**
+
+| **Autor** | **Número de editoriales** |
+| --------- | ------------------------: |
+| Julio Cortázar | 2 |
+
 ## 11. Limitaciones y mejoras futurasaciones y mejoras futuras
+### Limitaciones actuales
+
+El modelo desarrollado cubre las necesidades principales de la librería, pero existen algunas funcionalidades que no se han incluido.
+
+- No se almacena el **historial de cambios de tienda de los empleados**.
+- No se gestiona un sistema avanzado de **descuentos para socios**.
+- No se registran las **devoluciones** de libros.
+- No se gestionan **proveedores**.
+- No existe un sistema de **reservas**.
+- No se almacenan las **promociones temporales**.
+- No se mantiene un historial específico de cambios del **precio de catálogo**.
+
+### Mejoras futuras
+
+En futuras versiones se podrían añadir:
+
+1. Una tabla para almacenar el **historial de empleados**.
+2. Una tabla para gestionar diferentes tipos de **descuentos**.
+3. Un sistema de **devoluciones**.
+4. Gestión de **proveedores**.
+5. Sistema de **reservas de libros**.
+6. Gestión de **promociones**.
+7. Historial de **cambios de precio**.
+8. Gestión de **pedidos online**.
+9. Sistema de **notificaciones a clientes**.
