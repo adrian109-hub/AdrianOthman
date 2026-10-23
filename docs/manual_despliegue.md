@@ -203,3 +203,50 @@ Entonces desde Netbeans vas a Files y seleccionas .env.example y copias todo. ![
 Luego copias .env.example desde el gestor de archivos, y cambias el nombre a `.env`.![.](imagenes/31.png)
 
 Pegamos todo en el .env y cambiamos los datos de ejemplo con los nuestros de MySQL![.](imagenes/32.png)
+
+## 10. Ejecutar la aplicación
+
+Cuando todo esté configurado, probamos a ejecutar el main desde Netbeans.
+
+Seleccionamos el main y pulsamos ejecutar. Si la aplicación utiliza un menú por consola, aparecerán las opciones disponibles para trabajar con los libros.
+
+Aquí un ejemplo para mostrar todos los libros: ![.](imagenes/33.png) ![.](imagenes/34.png)
+
+## 11. Comprobar el funcionamiento
+
+Para comprobar que se ha realizado correctamente, vamos a realizar algunas operaciones.
+
+| Prueba | Resultado esperado |
+|---|---|
+| Buscar por autor | Se muestran los libros de ese autor. |
+| Insertar un libro | Se guarda el nuevo libro. |
+| Actualizar un libro | Se actualizan sus datos. |
+| Eliminar un libro | Deja de aparecer en las consultas. |
+| Buscar por título o autor | Se muestran las coincidencias encontradas. |
+| Buscar por precio | Aparecen los libros dentro del intervalo indicado. |
+
+Capturas de algunas:
+![.](imagenes/35.png)
+![.](imagenes/36.png)
+
+## 12. Problemas que pueden aparecer
+
+Durante el manual pueden aparecer errores que impidan que funciones bien. Algunos de los más habituales son los siguientes:
+
+| Problema | Posible solución |
+|---|---|
+| Java no se reconoce | Comprobar bien si el JDK esta bien instalado. |
+| Git no funciona | Revisar que se haya instalado correctamente. |
+| Netbeans no reconoce el proyecto | Comprobar la carpeta seleccionada y la versión de Java y que sea compatible. |
+| No se conecta a MySQL | Comprobar que el servidor está iniciado y revisar si tienes bien el .env. |
+| No existe la tabla libro | Ejecutar las consultas SQL dichas anteriormente. |
+| La aplicación no encuentra libros | Comprobar que existen registros y que la Database esta conectada. |
+
+
+## 13. Conclusión
+
+En este manual se han explicado los pasos necesarios para que un compañero se pueda conectar correctamente, instalar las apps, descargar el proyecto y configurar la base de datos y conectarse a ella.
+
+Se ha ejecutado la aplicación y se han muchas pruebas para comprobar que se trabaja perfecto con SQL.
+
+Todas las capturas estan hechas desde la MV para ver el proceso y comprobar los resultados de cada instalación y configuración.
