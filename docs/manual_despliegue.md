@@ -43,6 +43,42 @@ Para instalarlo seguimos estos pasos:
 - Dale click al último y se descargará un archivo ![.](imagenes/3.png)
 
 - Abres el .msi y le das a next todo el rato, aquí le das a "Sí" y esperas a que se instale
+
 ![.](imagenes/4.png)
 
 ## Con esto ya tienes  *Java* instalado
+
+## 3. Instalación de Git
+
+Git se utiliza para descargar el proyecto desde su repositorio y obtener sus archivos.
+
+### 3.1. Descargar e instalar Git
+
+Entras en la página oficial de [Git](https://git-scm.com/install/windows) y descargas el instalador para Windows. Le das al primero, ejecutas y le das a siguiente todo el rato.
+
+![.](imagenes/5.png)
+
+### 3.2. Comprobar que se ha instalado correctamente
+
+Una vez finalizado la instalación, abres una terminal y ejecutas esto:
+
+```cmd
+git --version
+```
+- Te tendria que aparecer así:
+
+![.](imagenes/6.png)
+
+## 4. Instalación de NetBeans
+
+NetBeans será el entorno utilizado para abrir el proyecto y ejecutar la aplicación.
+
+### 4.1. Descargar e instalar NetBeans
+
+Descargas [NetBeans](https://netbeans.apache.org/front/main/download/nb31/) desde su página oficial. Hay que elegir una versión compatible con el JDK instalado y con la versión de Java que utiliza el proyecto.
+
+Le das al primero, descargas el .zip y extraes todo![.](imagenes/7.png)
+![.](imagenes/8.png)
+
+Al finalizar abres la carpeta, vas a netbeans, bin y ejecutas netbeans64.exe para que se instala todo bien.
+![.](imagenes/9.png)
