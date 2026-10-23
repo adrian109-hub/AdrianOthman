@@ -144,4 +144,5 @@ incluir en el apartado de pruebas del trabajo.
 
   La contraseña no funciona           Que la contraseña del archivo
                                       `.env` coincida con la de MySQL.
+                                      
   -----------------------------------------------------------------------
