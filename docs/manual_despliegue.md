@@ -14,9 +14,6 @@ En este documento se explica cómo instalar y poner en funcionamiento la aplicac
 
 Aqui mandare capturas de que la MV está recien creada y que no hay trampas ni cartón.
 
-**Captura 1.** Estado inicial de la máquina virtual.
-![.](imagenes/image.png)
-
 ### 1.4. Comprobar el sistema operativo
 
 Aquí compruebo que el sistema operativo está instalado y su versión.
