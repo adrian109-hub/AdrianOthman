@@ -82,3 +82,61 @@ Le das al primero, descargas el .zip y extraes todo![.](imagenes/7.png)
 
 Al finalizar abres la carpeta, vas a netbeans, bin y ejecutas netbeans64.exe para que se instala todo bien.
 ![.](imagenes/9.png)
+
+## 5. Instalación y configuración de MySQL
+
+MySQL se utiliza para guardar los libros en una base de datos y poder realizar las operaciones desde la aplicación.
+
+### 5.2. Instalar Visual Studio
+
+Por alguna razón tienes que instalar primero Visual Studio para instalar MySQL Community Server, vas a esta [página](https://visualstudio.microsoft.com/insiders/?rwnlp=es) y descargas la version de Windows. ![.](imagenes/15.png)
+Ejecutas el instalador y le das a next todo el rato.
+
+### 5.1. Instalar MySQL Server
+
+Descargas [MySQL Server](https://dev.mysql.com/downloads/mysql/?platform&os=3/) desde su página oficial y se inicia el instalador de windows. ![.](imagenes/10.png) 
+
+Le das al primero, le das a seguir con mi descarga, ejecutas el instalador y le das a siguiente.
+
+Ahora sigues estos pasos:
+![.](imagenes/12.png)
+![.](imagenes/13.png)
+![.](imagenes/14.png)
+Ejecutas, y una vez terminado de momento le das a siguiente todo el rato.
+
+Aquí pones la contraseña que quieras, por ejemplo, yo he puesto "root". ![.](imagenes/16.png)
+
+Luego ejecutas todo lo que te pida y ya esta. ![.](imagenes/17.png)
+
+### 5.2. Abrir MySQL Workbench
+
+Abres MySQL Workbench y sigues estos pasos para ver si esta ejecutado correctamente.
+
+En la página principal bajas un poco y le das click a la base de datos.![.](imagenes/18.png)
+
+Ahora te pedirá la contraseña que has puesto anteriormente y le das a guardas contraseña para no volver a ponerla mas. ![.](imagenes/19.png)
+
+## 6. Github
+
+En este paso tienes que entrar en Github y copiar la URL del repositorio.
+
+Entras al proyecto ya compartido, le das a "Code" y copias desde HTTPS. ![.](imagenes/21.png)
+
+## 7. Descargar el proyecto
+
+### 7.1. Clonar el repositorio
+
+Una vez todo hecho tenemos que ir a NetBeans y clonar el repositorio.
+
+Para ello le damos a Team-Git-Clone...
+![.](imagenes/20.png)
+
+Aquí pegamos la URL del repositorio de Github, ponemos nuestro usuario y contraseña, y dejamos la ruta tal cual esta. ![.](imagenes/22.png)
+
+A partir de aqui le das a next y ya tendrias el proyecto en Netbeans.
+
+### 7.2. Instalar las librerias
+
+Cuando ya tengamos el proyecto vamos a libreries, click derecho y Add JAR/Folder.
+
+Aqui añadimos ambos archivos y ya las tendremos añadidas. ![.](imagenes/23.png)
