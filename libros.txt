@@ -1,0 +1,3 @@
+1^Don Quijote de la Mancha^Miguel de Cervantes^19.99^10
+2^Cien años de soledad^Gabriel García Márquez^15.50^7
+3^El principito^Antoine de Saint-Exupéry^12.00^15
