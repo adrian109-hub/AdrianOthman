@@ -140,3 +140,66 @@ A partir de aqui le das a next y ya tendrias el proyecto en Netbeans.
 Cuando ya tengamos el proyecto vamos a libreries, click derecho y Add JAR/Folder.
 
 Aqui añadimos ambos archivos y ya las tendremos añadidas. ![.](imagenes/23.png)
+
+### 7.3. Conectar Git con el proyecto
+
+Para conectarlo con Git, vas a la terminal, te pones en el repositorio y haces pones:
+
+```cmd
+git clone (URL del repositorio)
+```
+![.](imagenes/28.png)
+
+Cuando hagas algun commit o algo te pedira identificarte con tu correo y usuario, y luego desde un navegador o un código.![.](imagenes/29.png)
+## 8. Crear la base de datos
+
+### 8.1. Crear la base de datos
+
+Abre MySQL Workbench y la conectas a la Database, dandole a Database arriba y dejandolo así: ![.](imagenes/24.png)
+
+Si hace falta salir del modo seguro insertamos este comando primero:
+```sql
+SET SQL_SAFE_UPDATE=0
+```
+
+Ejecutas la siguiente consulta para crear la base de datos:
+```sql
+CREATE DATABASE IF NOT EXISTS librorepositorymysql
+  CHARACTER SET utf8mb4
+  COLLATE utf8mb4_general_ci;
+
+USE librorepositorymysql;
+
+CREATE TABLE IF NOT EXISTS libro (
+  id VARCHAR(50) PRIMARY KEY,
+  titulo VARCHAR(200) NOT NULL,
+  autor VARCHAR(150) NOT NULL,
+  precio DOUBLE NOT NULL,
+  stock INT NOT NULL
+);
+
+DELETE FROM libro;
+
+INSERT INTO libro (id, titulo, autor, precio, stock)
+VALUES
+('1', 'Don Quijote de la Mancha', 'Miguel de Cervantes', 19.99, 10),
+('2', 'Cien años de soledad', 'Gabriel García Márquez', 15.50, 7),
+('3', 'El principito', 'Antoine de Saint-Exupéry', 12.00, 15);
+```
+Y comprobamos que funcione:
+```sql
+SELECT * FROM libro;
+```
+
+Si aparece los libros insertados, significa que la base esta bien hecha.![.](imagenes/25.png)
+
+
+## 9. Configurar la conexión de Java con MySQL
+
+La clase `ConexionDB` es la encargada de obtener la conexión con la base de datos.
+
+Entonces desde Netbeans vas a Files y seleccionas .env.example y copias todo. ![.](imagenes/30.png)
+
+Luego copias .env.example desde el gestor de archivos, y cambias el nombre a `.env`.![.](imagenes/31.png)
+
+Pegamos todo en el .env y cambiamos los datos de ejemplo con los nuestros de MySQL![.](imagenes/32.png)
